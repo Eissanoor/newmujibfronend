@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&family=Poppins:wght@100;200&display=swap');
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: 14px !important;
+  color: #626060;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.background1 {
+  background-color: #a3a2a3;
+}
+
+.inputsection {
+  border: 1px solid #adadad;
+}
+
+.color1 {
+  color: #1E3B8B
+}
+
+.color2 {
+  color: #505D66
+}
+
+.color3 {
+  color: #00006A;
+}
+
+.colorblack {
+  color: #000;
+}
+
+.star {
+  color: #FF0404;
+  font-weight: bold;
+}
+
+.bgupdata {
+  background: #D7F2FD !important;
+}
+
+.bgtime {
+  background: #c9cccccc !important;
+
+}
+
+.pointerss {
+  cursor: pointer !important;
+}
+
+.bordercolor {
+  border: 1px solid #000;
+}
+
+.backgroundopen {
+  background-color: rgb(196, 206, 203);
+}
+
+.cancelledgrey {
+  background-color: gray;
+}
+
+.Inactiveuser {
+  background-color: rgb(170, 112, 112);
+}
+
+.Paddingbackground {
+  background-color: rgb(192, 192, 125);
+}
+
+.css-gl260s-MuiDataGrid-columnHeadersInner {
+  background: rgb(231 153 8) !important;
+  color: white !important;
+}
+
+.header-red {
+  background-color: rgb(231 153 8);
+  color: white !important;
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.printerpic {
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
+}
+
+.printerPic {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 209px;
+  background: #F5F5F5;
+  border: 1px solid #000000;
+  border-radius: 8px;
+}
+
+.savebtn {
+  background: rgb(231 153 8);
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+}
+
+.savebtn:hover {
+  background-color: darkkhaki;
+}
+
+.lablesection {
+  /* font-family: 'Inter'; */
+  font-family: 'Roboto', sans-serif !important;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+/* Add a default style */
+.form-control {
+  border: 1px solid #ced4da;
+}
+
+/* Add a style for when the input is focused */
+.form-control:focus {
+  border: 1px solid rgb(231 153 8);
+  box-shadow: none;
+}
+
+.btnwork {
+  border: 1px solid rgb(231 153 8);
+  background-color: transparent;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.btnwork:hover {
+  background-color: rgb(231 153 8);
+  color: rgb(255, 255, 255);
+}
+
+.donloadbuton {
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+
+.donloadbuton a {
+  border: none;
+  text-decoration: none;
+}
+
+.text_lable {
+  font-size: 17px !important;
+  word-wrap: break-word;
+}
+
+.toperheading {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  color: #900;
+  font-size: 17px !important;
+}
+
+.maincontainer {
+  width: 75%;
+  margin: 0 auto;
+  /* This will center the div horizontally */
+  padding: 5px 0px;
+}
+.bg-custom {
+  background-color: #626262 !important;
+  font-size: 20px !important;
+}
+
+@media screen and (max-width: 425px) {
+  .btnwork {
+    width: 220px;
+  }
+
+  .text_lable {
+    font-size: 12px !important;
+  }
+.bg-custom {
+  background-color: #626262 !important;
+  font-size: 14px !important;
+}
+}
+.lablevaluecolor{
+  color: #000 !important;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 768px) {
+  .maincontainer {
+    width: 100%;
+    margin: 0px 0px;
+    /* This will center the div horizontally */
+    padding: 0px 0px;
+  }
+
+}

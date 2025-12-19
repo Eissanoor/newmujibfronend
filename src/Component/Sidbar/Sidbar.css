@@ -1,0 +1,15 @@
+.serachicon {
+    left: 90% !important;
+    top: 10% !important;
+    font-size: 20px;
+}
+.activeelement{
+    background-color: rgb(231 153 8);
+    color: white;
+}
+.Customeelement{
+    background-color: transparent;
+}
+.sidebariconactive{
+    color: white;
+}
