@@ -1,0 +1,587 @@
+/* Main container */
+.create-page-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 1.5rem;
+    position: relative;
+    overflow-x: auto;
+    box-sizing: border-box;
+}
+
+/* Desktop optimized padding */
+@media only screen and (min-width: 768px) {
+    .create-page-container {
+        padding: 2rem 2.5rem;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .create-page-container {
+        padding: 2.5rem 3rem;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .create-page-container {
+        padding: 3rem 4rem;
+    }
+}
+
+/* Background decoration */
+.create-background-decoration {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.create-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(102, 126, 234, 0.05);
+    animation: floatCreate 25s infinite ease-in-out;
+}
+
+.create-circle-1 {
+    width: 400px;
+    height: 400px;
+    top: -150px;
+    right: -150px;
+    animation-delay: 0s;
+}
+
+.create-circle-2 {
+    width: 300px;
+    height: 300px;
+    bottom: -100px;
+    left: -100px;
+    animation-delay: 8s;
+}
+
+@keyframes floatCreate {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(30px, -30px) scale(1.1);
+        opacity: 0.5;
+    }
+}
+
+/* Content wrapper */
+.create-content-wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Desktop optimized max-width */
+@media only screen and (min-width: 992px) {
+    .create-content-wrapper {
+        max-width: 1400px;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .create-content-wrapper {
+        max-width: 1600px;
+    }
+}
+
+/* Form container */
+.create-form-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Desktop optimized padding */
+@media only screen and (min-width: 768px) {
+    .create-form-container {
+        padding: 2.5rem 3rem;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .create-form-container {
+        padding: 3rem 4rem;
+        border-radius: 24px;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .create-form-container {
+        padding: 3.5rem 5rem;
+    }
+}
+
+.create-form-container:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Header section */
+.create-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid rgba(102, 126, 234, 0.1);
+}
+
+/* Desktop optimized header */
+@media only screen and (min-width: 992px) {
+    .create-header {
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+    }
+}
+
+.create-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Desktop optimized title */
+@media only screen and (min-width: 992px) {
+    .create-title {
+        font-size: 2.5rem;
+        gap: 1rem;
+    }
+}
+
+.create-title-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Desktop optimized icon */
+@media only screen and (min-width: 992px) {
+    .create-title-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.75rem;
+        border-radius: 14px;
+    }
+}
+
+/* Form grid */
+.create-form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Desktop large screens - 3 columns with better spacing */
+@media only screen and (min-width: 992px) {
+    .create-form-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.75rem 2rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .create-form-grid {
+        gap: 2rem 2.5rem;
+        margin-bottom: 3rem;
+    }
+}
+
+/* Extra large desktop - even more spacing */
+@media only screen and (min-width: 1600px) {
+    .create-form-grid {
+        gap: 2.5rem 3rem;
+        margin-bottom: 3.5rem;
+    }
+}
+
+/* Tablet screens - 2 columns */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .create-form-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem 1.75rem;
+    }
+}
+
+/* Form group */
+.create-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+/* Desktop optimized form groups */
+@media only screen and (min-width: 992px) {
+    .create-form-group {
+        gap: 0.75rem;
+    }
+}
+
+.create-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Desktop optimized labels */
+@media only screen and (min-width: 992px) {
+    .create-label {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.create-label .required-star {
+    color: #e53e3e;
+    font-weight: 700;
+}
+
+/* Input styling */
+.create-input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.9375rem;
+    background-color: #f7fafc;
+    color: #2d3748;
+    transition: all 0.3s ease;
+    outline: none;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+/* Desktop optimized inputs */
+@media only screen and (min-width: 768px) {
+    .create-input {
+        padding: 0.9375rem 1.125rem;
+        font-size: 0.96875rem;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .create-input {
+        padding: 1rem 1.25rem;
+        font-size: 1rem;
+        border-radius: 12px;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .create-input {
+        padding: 1.125rem 1.5rem;
+        font-size: 1.0625rem;
+    }
+}
+
+.create-input:focus {
+    border-color: #667eea;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: translateY(-1px);
+}
+
+.create-input::placeholder {
+    color: #a0aec0;
+}
+
+.create-input:hover {
+    border-color: #cbd5e0;
+}
+
+/* Textarea styling */
+.create-textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.9375rem;
+    background-color: #f7fafc;
+    color: #2d3748;
+    transition: all 0.3s ease;
+    outline: none;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Desktop optimized textarea */
+@media only screen and (min-width: 992px) {
+    .create-textarea {
+        padding: 1rem 1.25rem;
+        font-size: 1rem;
+        border-radius: 12px;
+        min-height: 140px;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .create-textarea {
+        padding: 1.125rem 1.5rem;
+        font-size: 1.0625rem;
+        min-height: 160px;
+    }
+}
+
+.create-textarea:focus {
+    border-color: #667eea;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.create-textarea::placeholder {
+    color: #a0aec0;
+}
+
+/* Date input styling */
+.create-input[type="date"] {
+    color-scheme: light;
+    cursor: pointer;
+}
+
+.create-input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.5);
+}
+
+.create-input[type="date"]:focus::-webkit-calendar-picker-indicator {
+    filter: invert(0.3) sepia(1) saturate(5) hue-rotate(220deg);
+}
+
+/* Action buttons container */
+.create-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(102, 126, 234, 0.1);
+    flex-wrap: wrap;
+}
+
+/* Desktop optimized actions */
+@media only screen and (min-width: 992px) {
+    .create-actions {
+        margin-top: 3rem;
+        padding-top: 2.5rem;
+        gap: 1.5rem;
+    }
+}
+
+/* Modern button styles */
+.create-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Desktop optimized buttons */
+@media only screen and (min-width: 992px) {
+    .create-btn {
+        padding: 1rem 2.5rem;
+        font-size: 1.0625rem;
+        border-radius: 14px;
+        gap: 0.75rem;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .create-btn {
+        padding: 1.125rem 3rem;
+        font-size: 1.125rem;
+    }
+}
+
+.create-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.create-btn:hover::before {
+    left: 100%;
+}
+
+.create-btn-back {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.create-btn-back:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.create-btn-save {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: white;
+}
+
+.create-btn-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(17, 153, 142, 0.4);
+}
+
+.create-btn:active {
+    transform: translateY(0);
+}
+
+.create-btn svg {
+    font-size: 1.25rem;
+}
+
+/* Desktop optimized button icons */
+@media only screen and (min-width: 992px) {
+    .create-btn svg {
+        font-size: 1.375rem;
+    }
+}
+
+/* Full width textarea */
+.create-textarea-group {
+    grid-column: 1 / -1;
+}
+
+/* Responsive design */
+@media only screen and (max-width: 767px) {
+    .create-page-container {
+        padding: 1rem;
+    }
+
+    .create-form-container {
+        padding: 1.5rem;
+        border-radius: 16px;
+    }
+
+    .create-title {
+        font-size: 1.75rem;
+    }
+
+    .create-title-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.25rem;
+    }
+
+    .create-form-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.25rem;
+    }
+
+    .create-actions {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0.75rem;
+    }
+
+    .create-btn {
+        flex: 1;
+        min-width: 140px;
+        padding: 0.875rem 1.5rem;
+    }
+
+    .create-circle-1 {
+        width: 250px;
+        height: 250px;
+    }
+
+    .create-circle-2 {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .create-page-container {
+        padding: 0.75rem;
+    }
+
+    .create-form-container {
+        padding: 1.25rem;
+        border-radius: 12px;
+    }
+
+    .create-title {
+        font-size: 1.5rem;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .create-header {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+    }
+
+    .create-form-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+    }
+
+    .create-actions {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        flex-direction: column-reverse;
+    }
+
+    .create-btn {
+        width: 100%;
+    }
+}
+
+/* Remove old background styles */
+.create-page-container .old-background {
+    display: none;
+}
+

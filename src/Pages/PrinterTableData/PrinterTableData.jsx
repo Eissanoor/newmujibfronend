@@ -21,6 +21,7 @@ import iimageeee from "../../img/tempp.png"
 import { saveAs } from "file-saver";
 import QRCodeStyling from "qr-code-styling";
 import SettingsIcon from "@mui/icons-material/Settings";
+import "./PrinterTableData.css";
 
 function PrinterTableData()
 {
@@ -302,101 +303,94 @@ function PrinterTableData()
 
     return (
         <>
-            <div className="bg">
-                <div className="mt-md-3 mt-sm-1 p-lg-3 p-md-3 p-sm-1">
-                    <Box sx={{ display: "flex" }}>
-                        {/* <Siderbar /> */}
+            <div className="table-page-container">
+                <div className="table-background-decoration">
+                    <div className="table-circle table-circle-1"></div>
+                    <div className="table-circle table-circle-2"></div>
+                </div>
+                
+                <div className="table-content-wrapper">
+                    <Box sx={{ display: "flex", flexDirection: "column" }}>
                         <AppBar
                             className="fortrans locationfortrans"
                             position="fixed"
+                            sx={{ display: 'none' }}
                         ></AppBar>
-                        <div
-                            style={{
-                                height: 450,
-                                width: "100%",
-                                background: `url("../../img/Printer.png")`,
-                                backgroundSize: "cover",
-                            }}
-                        >
-                            <div className='d-flex justify-content-end me-3'>
-
-<SettingsIcon style={{ cursor: 'pointer' }} onClick={handleClick}/>
+                        
+                        <div className="table-container-wrapper">
+                            <div className="settings-icon-wrapper">
+                                <div className="settings-icon" onClick={handleClick}>
+                                    <SettingsIcon />
+                                </div>
                             </div>
-                            <div className=" justify-content-between my-4 my-sm-2 w-100 d-sm-flex d-md-flex d-lg-flex shadow-sm shadow p-lg-4 p-sm-1 mb-4 bg-white">
-                                <h5 className="text-lg-start my-auto text-sm-center d-none d-md-flex">
-                                    vehicle List
-                                </h5>
-                                <div className="d-flex justify-content-md-start justify-content-sm-between ">
+
+                            <div className="table-header-section">
+                                <h1 className="table-title">Vehicle List</h1>
+                                <div className="table-actions-container">
                                     <button
                                         type="button"
-                                        className="rounded py-1 px-2 mx-1 color2 btnwork "
-                                        onClick={() =>
-                                        {
+                                        className="modern-action-btn btn-create"
+                                        onClick={() => {
                                             navigate("/Create/Createtableprint");
                                         }}
                                     >
-                                        <AddCircleOutlineIcon className="me-1" />
+                                        <AddCircleOutlineIcon />
                                         Create
                                     </button>
-
-                                    {/* <button
-                                        onClick={printerfuunction}
-                                        className='rounded py-1 px-2 mx-1 color2 btnwork'
-                                    >
-                                        <PrintIcon className='me-1' /> Print
-                                    </button> */}
                                     <button
                                         onClick={printerfuunction}
-                                        className="rounded py-1 px-2 mx-lg-1 mx-1 color2 btnwork"
+                                        className="modern-action-btn btn-pdf"
                                     >
-                                        <PictureAsPdfIcon className="me-1" />
-                                        PDF
+                                        <PictureAsPdfIcon />
+                                        Export PDF
                                     </button>
                                 </div>
                             </div>
-                            <Datatable
-                                data={getdata}
-                                columnsName={ShipmentRequestColumns}
-                                checkboxSelection
-                                disableRowSelectionOnClick
-                                disableMultipleSelection
-                                uniqueId="customerListId"
-                                handleRowClickInParent={handleRowClickInParent}
-                                dropDownOptions={[
-                                    {
-                                        label: "View",
-                                        icon: (
-                                            <VisibilityIcon
-                                                fontSize="small"
-                                                color="action"
-                                                style={{ color: "rgb(37 99 235)" }}
-                                            />
-                                        ),
-                                        action: handleView,
-                                    },
-                                    ,
-                                    {
-                                        label: "Update",
-                                        icon: (
-                                            <EditIcon
-                                                fontSize="small"
-                                                style={{ color: "rgb(37 99 235)" }}
-                                            />
-                                        ),
-                                        action: handleUpdate,
-                                    },
-                                    {
-                                        label: "Delete",
-                                        icon: (
-                                            <DeleteIcon
-                                                fontSize="small"
-                                                style={{ color: "#FF0032" }}
-                                            />
-                                        ),
-                                        action: handleDelete,
-                                    },
-                                ]}
-                            />
+
+                            <div className="table-data-container">
+                                <Datatable
+                                    data={getdata}
+                                    columnsName={ShipmentRequestColumns}
+                                    checkboxSelection
+                                    disableRowSelectionOnClick
+                                    disableMultipleSelection
+                                    uniqueId="customerListId"
+                                    handleRowClickInParent={handleRowClickInParent}
+                                    dropDownOptions={[
+                                        {
+                                            label: "View",
+                                            icon: (
+                                                <VisibilityIcon
+                                                    fontSize="small"
+                                                    color="action"
+                                                    style={{ color: "rgb(37 99 235)" }}
+                                                />
+                                            ),
+                                            action: handleView,
+                                        },
+                                        {
+                                            label: "Update",
+                                            icon: (
+                                                <EditIcon
+                                                    fontSize="small"
+                                                    style={{ color: "rgb(37 99 235)" }}
+                                                />
+                                            ),
+                                            action: handleUpdate,
+                                        },
+                                        {
+                                            label: "Delete",
+                                            icon: (
+                                                <DeleteIcon
+                                                    fontSize="small"
+                                                    style={{ color: "#FF0032" }}
+                                                />
+                                            ),
+                                            action: handleDelete,
+                                        },
+                                    ]}
+                                />
+                            </div>
                         </div>
                     </Box>
                 </div>

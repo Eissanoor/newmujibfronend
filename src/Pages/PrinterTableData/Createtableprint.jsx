@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutlined";
 import SaveIcon from '@mui/icons-material/Save';
 import Swal from "sweetalert2";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import "./Createtableprint.css";
 
 function Createtableprint()
 {
@@ -75,616 +77,560 @@ function Createtableprint()
 
     return (
         <>
-            <div className="bg mt-3">
-                <Box sx={{ display: "flex" }}>
-                    {/* <Siderbar /> */}
-                    <AppBar
-                        className="fortrans locationfortrans"
-                        position="fixed"
-                    ></AppBar>
-                    <div className="w-100 p-4">
-                        <center>
-                            <h6 className="fw-bolder fs-3 workitoppro mb-4 text-start mx-3">
-                                Create
-                            </h6>
-                        </center>
-                        <div className="mt-3">
-                            <div className="row  p-2 mx-auto mt-5">
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="CardNo"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            Card No<span className="star">*</span>
-                                        </label>
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="CardNo"
-                                            placeholder="Card No"
-                                            type="number"
-                                            value={value.CardNo}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    CardNo: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+            <div className="create-page-container">
+                <div className="create-background-decoration">
+                    <div className="create-circle create-circle-1"></div>
+                    <div className="create-circle create-circle-2"></div>
+                </div>
+                
+                <div className="create-content-wrapper">
+                    <Box sx={{ display: "flex" }}>
+                        <AppBar
+                            className="fortrans locationfortrans"
+                            position="fixed"
+                            sx={{ display: 'none' }}
+                        ></AppBar>
+                        
+                        <div className="create-form-container">
+                            <div className="create-header">
+                                <h1 className="create-title">
+                                    <span className="create-title-icon">
+                                        <AddCircleOutlineIcon />
+                                    </span>
+                                    Create New Vehicle
+                                </h1>
+                            </div>
+
+                            <div className="create-form-grid">
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="CardNo"
+                                        className="create-label"
+                                    >
+                                        Card No<span className="required-star">*</span>
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="CardNo"
+                                        placeholder="Enter Card No"
+                                        type="number"
+                                        value={value.CardNo}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                CardNo: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="VehicalType"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            Vehical Type
-                                        </label>
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="VehicalType"
-                                            placeholder="Enter Vehical Type"
-                                            type="text"
-                                            value={value.VehicalType}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    VehicalType: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="VehicalType"
+                                        className="create-label"
+                                    >
+                                        Vehicle Type
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="VehicalType"
+                                        placeholder="Enter Vehicle Type"
+                                        type="text"
+                                        value={value.VehicalType}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                VehicalType: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="ModelYear"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            Model Year
-                                        </label>
-
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="ModelYear"
-                                            placeholder="Enter Model Year"
-                                            type="text"
-                                            value={value.ModelYear}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    ModelYear: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="ModelYear"
+                                        className="create-label"
+                                    >
+                                        Model Year
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="ModelYear"
+                                        placeholder="Enter Model Year"
+                                        type="text"
+                                        value={value.ModelYear}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                ModelYear: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="Vehiclemodel"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                          Vehicle Model
-                                        </label>
-
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="Vehiclemodel"
-                                            placeholder="Enter Vehicle Model"
-                                            type="text"
-                                            value={value.Vehiclemodel}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    Vehiclemodel: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="Vehiclemodel"
+                                        className="create-label"
+                                    >
+                                        Vehicle Model
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="Vehiclemodel"
+                                        placeholder="Enter Vehicle Model"
+                                        type="text"
+                                        value={value.Vehiclemodel}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                Vehiclemodel: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="CardNo"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            Engine HP<span className="star">*</span>
-                                        </label>
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="EngineHP"
-                                            placeholder="Enter EngineHP"
-                                            type="text"
-                                            value={value.EngineHP}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    EngineHP: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="EngineHP"
+                                        className="create-label"
+                                    >
+                                        Engine HP<span className="required-star">*</span>
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="EngineHP"
+                                        placeholder="Enter Engine HP"
+                                        type="text"
+                                        value={value.EngineHP}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                EngineHP: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="Origin"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            Origin
-                                        </label>
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="Origin"
-                                            placeholder="Enter Origin"
-                                            type="text"
-                                            value={value.Origin}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    Origin: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="Origin"
+                                        className="create-label"
+                                    >
+                                        Origin
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="Origin"
+                                        placeholder="Enter Origin"
+                                        type="text"
+                                        value={value.Origin}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                Origin: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="weight"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            Weight
-                                        </label>
-
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="weight"
-                                            placeholder="Enter Weight "
-                                            type="text"
-                                            value={value.weight}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    weight: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="weight"
+                                        className="create-label"
+                                    >
+                                        Weight
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="weight"
+                                        placeholder="Enter Weight"
+                                        type="text"
+                                        value={value.weight}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                weight: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="chassisNo"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            Chassis No<span className="star">*</span>
-                                        </label>
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="chassisNo"
-                                            placeholder="Enter Chassis No"
-                                            type="text"
-                                            value={value.chassisNo}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    chassisNo: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="chassisNo"
+                                        className="create-label"
+                                    >
+                                        Chassis No<span className="required-star">*</span>
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="chassisNo"
+                                        placeholder="Enter Chassis No"
+                                        type="text"
+                                        value={value.chassisNo}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                chassisNo: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="importerorowner"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            Importer Or Owner
-                                        </label>
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="importerorowner"
-                                            placeholder="Enter Importer Or Owner"
-                                            type="text"
-                                            value={value.importerorowner}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    importerorowner: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="importerorowner"
+                                        className="create-label"
+                                    >
+                                        Importer Or Owner
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="importerorowner"
+                                        placeholder="Enter Importer Or Owner"
+                                        type="text"
+                                        value={value.importerorowner}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                importerorowner: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="color"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            Color
-                                        </label>
-
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="color"
-                                            placeholder="Enter color "
-                                            type="text"
-                                            value={value.color}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    color: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="color"
+                                        className="create-label"
+                                    >
+                                        Color
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="color"
+                                        placeholder="Enter Color"
+                                        type="text"
+                                        value={value.color}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                color: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="EngineNo"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            Engine No
-                                        </label>
-
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="EngineNo"
-                                            placeholder="Enter Engine No "
-                                            type="text"
-                                            value={value.EngineNo}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    EngineNo: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="EngineNo"
+                                        className="create-label"
+                                    >
+                                        Engine No
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="EngineNo"
+                                        placeholder="Enter Engine No"
+                                        type="text"
+                                        value={value.EngineNo}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                EngineNo: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="Load"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            Load
-                                        </label>
-
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="Load"
-                                            placeholder="Enter Load "
-                                            type="text"
-                                            value={value.Load}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    Load: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="Load"
+                                        className="create-label"
+                                    >
+                                        Load
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="Load"
+                                        placeholder="Enter Load"
+                                        type="text"
+                                        value={value.Load}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                Load: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="Vehicledrive"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            Vehicle Drive
-                                        </label>
-
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="Vehicledrive"
-                                            placeholder="Enter Vehicle Drive"
-                                            type="text"
-                                            value={value.Vehicledrive}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    Vehicledrive: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="Vehicledrive"
+                                        className="create-label"
+                                    >
+                                        Vehicle Drive
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="Vehicledrive"
+                                        placeholder="Enter Vehicle Drive"
+                                        type="text"
+                                        value={value.Vehicledrive}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                Vehicledrive: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="EngineCapacity"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            Engine Capacity
-                                        </label>
-
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="EngineCapacity"
-                                            placeholder="Enter Engine Capacity"
-                                            type="text"
-                                            value={value.EngineCapacity}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    EngineCapacity: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="EngineCapacity"
+                                        className="create-label"
+                                    >
+                                        Engine Capacity
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="EngineCapacity"
+                                        placeholder="Enter Engine Capacity"
+                                        type="text"
+                                        value={value.EngineCapacity}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                EngineCapacity: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="PassengerCapacity"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            {" "}
-                                            Passenger Capacity
-                                        </label>
-
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="PassengerCapacity"
-                                            placeholder="Enter Passenger Capacity"
-                                            type="text"
-                                            value={value.PassengerCapacity}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    PassengerCapacity: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="PassengerCapacity"
+                                        className="create-label"
+                                    >
+                                        Passenger Capacity
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="PassengerCapacity"
+                                        placeholder="Enter Passenger Capacity"
+                                        type="text"
+                                        value={value.PassengerCapacity}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                PassengerCapacity: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="CarriageCapacity"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            {" "}
-                                            Carriage Capacity
-                                        </label>
-
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="CarriageCapacity"
-                                            placeholder="Enter Passenger Capacity"
-                                            type="text"
-                                            value={value.CarriageCapacity}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    CarriageCapacity: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="CarriageCapacity"
+                                        className="create-label"
+                                    >
+                                        Carriage Capacity
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="CarriageCapacity"
+                                        placeholder="Enter Carriage Capacity"
+                                        type="text"
+                                        value={value.CarriageCapacity}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                CarriageCapacity: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="VehicleBrandName"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            Vehicle Brand Name
-                                        </label>
-
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="VehicleBrandName"
-                                            placeholder="Enter Vehicle Brand Name"
-                                            type="text"
-                                            value={value.VehicleBrandName}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    VehicleBrandName: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="VehicleBrandName"
+                                        className="create-label"
+                                    >
+                                        Vehicle Brand Name
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="VehicleBrandName"
+                                        placeholder="Enter Vehicle Brand Name"
+                                        type="text"
+                                        value={value.VehicleBrandName}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                VehicleBrandName: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="SpecificationStandardName"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            Specification Standard Name
-                                        </label>
-
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="SpecificationStandardName"
-                                            placeholder="Enter Specification Standard Name"
-                                            type="text"
-                                            value={value.SpecificationStandardName}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    SpecificationStandardName: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="SpecificationStandardName"
+                                        className="create-label"
+                                    >
+                                        Specification Standard Name
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="SpecificationStandardName"
+                                        placeholder="Enter Specification Standard Name"
+                                        type="text"
+                                        value={value.SpecificationStandardName}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                SpecificationStandardName: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="OwnerCode"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            Owner Code
-                                        </label>
-
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="OwnerCode"
-                                            placeholder="Enter Owner Code"
-                                            type="text"
-                                            value={value.OwnerCode}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    OwnerCode: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="OwnerCode"
+                                        className="create-label"
+                                    >
+                                        Owner Code
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="OwnerCode"
+                                        placeholder="Enter Owner Code"
+                                        type="text"
+                                        value={value.OwnerCode}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                OwnerCode: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                
-                                <div className="col-sm-12 col-md-4 col-lg-4 col-xl-4 mb-2 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="Declaration"
-                                            className="lablesection colorblack text-start"
-                                        >
-                                            Declaration
-                                        </label>
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="Declaration"
-                                            type="text"
-                                            value={value.Declaration}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    Declaration: e.target.value,
-                                                }));
-                                            }}
-                                        />
-
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="Declaration"
+                                        className="create-label"
+                                    >
+                                        Declaration
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="Declaration"
+                                        placeholder="Enter Declaration"
+                                        type="text"
+                                        value={value.Declaration}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                Declaration: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="Datetime"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            Date
-                                        </label>
-
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="Datetime"
-                                            type="date"
-                                            value={value.Datetime}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    Datetime: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="Datetime"
+                                        className="create-label"
+                                    >
+                                        Date
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="Datetime"
+                                        type="date"
+                                        value={value.Datetime}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                Datetime: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="VCCGenerationDate"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            VCC Generation Date
-                                        </label>
-
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="VCCGenerationDate"
-                                            type="date"
-                                            value={value.VCCGenerationDate}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    VCCGenerationDate: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="VCCGenerationDate"
+                                        className="create-label"
+                                    >
+                                        VCC Generation Date
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="VCCGenerationDate"
+                                        type="date"
+                                        value={value.VCCGenerationDate}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                VCCGenerationDate: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-                                <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 my-2">
-                                    <div className="mb-3 text-start">
-                                        <label
-                                            htmlFor="DeclarationDate"
-                                            className="lablesection colorblack text-start mb-1"
-                                        >
-                                            Declaration Date
-                                        </label>
-
-                                        <input
-                                            className="form-control inputsection py-2"
-                                            id="DeclarationDate"
-                                            type="date"
-                                            value={value.DeclarationDate}
-                                            onChange={(e) =>
-                                            {
-                                                setvalue((prevValue) => ({
-                                                    ...prevValue,
-                                                    DeclarationDate: e.target.value,
-                                                }));
-                                            }}
-                                        />
-                                    </div>
+                                <div className="create-form-group">
+                                    <label
+                                        htmlFor="DeclarationDate"
+                                        className="create-label"
+                                    >
+                                        Declaration Date
+                                    </label>
+                                    <input
+                                        className="create-input"
+                                        id="DeclarationDate"
+                                        type="date"
+                                        value={value.DeclarationDate}
+                                        onChange={(e) =>
+                                        {
+                                            setvalue((prevValue) => ({
+                                                ...prevValue,
+                                                DeclarationDate: e.target.value,
+                                            }));
+                                        }}
+                                    />
                                 </div>
 
-
-                                <div className="emailsection position-relative d-grid my-2">
+                                <div className="create-form-group create-textarea-group">
                                     <label
                                         htmlFor="Comments"
-                                        className="lablesection colorblack text-start mb-1"
+                                        className="create-label"
                                     >
                                         Comments
                                     </label>
@@ -698,34 +644,33 @@ function Createtableprint()
                                                 Comments: e.target.value,
                                             }));
                                         }}
-                                        className="form-control inputsection py-2"
+                                        className="create-textarea"
                                         placeholder="Enter your Comments"
-                                        required
                                     ></textarea>
                                 </div>
                             </div>
+
+                            <div className="create-actions">
+                                <button
+                                    type="button"
+                                    className="create-btn create-btn-back"
+                                    onClick={() => navigate("/Table")}
+                                >
+                                    <ArrowCircleLeftOutlinedIcon />
+                                    Back
+                                </button>
+                                <button
+                                    type="button"
+                                    className="create-btn create-btn-save"
+                                    onClick={addtransaction}
+                                >
+                                    <SaveIcon />
+                                    Save
+                                </button>
+                            </div>
                         </div>
-                        <div className="d-flex justify-content-between mt-5">
-                            <button
-                                type="button"
-                                className="border-0 px-3  savebtn py-2"
-                                onClick={() => navigate("/Table")}
-                            >
-                                {" "}
-                                <ArrowCircleLeftOutlinedIcon className="me-2" />
-                                Back
-                            </button>
-                            <button
-                                type="button"
-                                className="border-0 px-3 mx-2  savebtn py-2 "
-                                onClick={addtransaction}
-                            >
-                                <SaveIcon className="me-2" />
-                                SAVE
-                            </button>
-                        </div>
-                    </div>
-                </Box>
+                    </Box>
+                </div>
             </div>
         </>
     );
