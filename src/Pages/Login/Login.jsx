@@ -52,89 +52,121 @@ function Login() {
   return (
     <>
       <div className="main_div">
-        <div className="from_data rounded">
-            <div>
-              <center>
-                <h6 className="fw-bolder fs-3">Welcome</h6>
-                <p className=" fs-6">Let's get Started</p>
-              </center>
-              <form className="modal-content w-100 " onSubmit={loginbutton}>
-                {/* Email section */}
-                <div className="emailsection position-relative d-grid my-2">
-                  <label
-                    htmlFor="email"
-                    className="lablesection text-start mb-1"
-                  >
-                    Email
-                  </label>
-                  <p className="position-absolute text-end emailicon">
+        <div className="background-decoration">
+          <div className="circle circle-1"></div>
+          <div className="circle circle-2"></div>
+          <div className="circle circle-3"></div>
+        </div>
+        <div className="from_data">
+          <div className="login-container">
+            <div className="welcome-section">
+              <div className="welcome-icon">
+                <LockOutlined />
+              </div>
+              <h1 className="welcome-title">Welcome Back</h1>
+              <p className="welcome-subtitle">Sign in to continue to your account</p>
+            </div>
+            
+            <form className="login-form" onSubmit={loginbutton}>
+              {/* Email section */}
+              <div className="input-group">
+                <label htmlFor="email" className="input-label">
+                  Email Address
+                </label>
+                <div className="input-wrapper">
+                  <span className="input-icon">
                     <MailOutlined />
-                  </p>
+                  </span>
                   <input
-                    types="email"
+                    type="email"
                     id="email"
                     value={email}
                     onChange={(e) => {
                       setemail(e.target.value);
                     }}
-                    className="rounded emailinput py-2 ps-4 "
-                    placeholder="example@gmail.com"
+                    className="form-input"
+                    placeholder="Enter your email"
                     required
-                  ></input>
+                  />
                 </div>
+              </div>
 
-                {/* password section */}
-                <div className="emailsection position-relative my-2 d-grid">
-                  <label
-                    htmlFor="password"
-                    className="lablesection text-start my-1"
-                  >
-                    Password
-                  </label>
-                  <p className="position-absolute text-end   LockOutlinedicon">
+              {/* Password section */}
+              <div className="input-group">
+                <label htmlFor="password" className="input-label">
+                  Password
+                </label>
+                <div className="input-wrapper">
+                  <span className="input-icon">
                     <LockOutlined />
-                  </p>
+                  </span>
                   <input
                     type={passwordShown ? "text" : "password"}
                     id="password"
-                    className=" rounded mt-2 ps-4 emailinput py-2"
-                    placeholder="*********"
+                    className="form-input"
+                    placeholder="Enter your password"
                     value={password}
                     onChange={(e) => setpassword(e.target.value)}
                     required
-                  ></input>
-                  <p
-                    className="position-absolute text-end showpassicon mt-5 "
+                  />
+                  <span
+                    className="password-toggle"
                     onClick={togglePassword}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        togglePassword();
+                      }
+                    }}
                   >
                     {passwordShown ? <EyeOutlined /> : <EyeInvisibleOutlined />}
-                  </p>
+                  </span>
                 </div>
+              </div>
 
-                {error ? (
-                  <lable className="text-danger text-start mb-2">{error}</lable>
-                ) : null}
-                {/* Forgetpassword */}
-                <p
-                  className="Forgetpassword text-end cursor pointername"
+              {error && (
+                <div className="error-message">
+                  {error}
+                </div>
+              )}
+
+              {/* Forget password */}
+              <div className="forgot-password-wrapper">
+                <span
+                  className="forgot-password"
                   onClick={() => {
                     navigate("/Forgetpassword");
                   }}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      navigate("/Forgetpassword");
+                    }
+                  }}
                 >
-                  Forget password?
-                </p>
-                {/* Button section */}
-                <div className="emailsection mt-3 d-grid">
-                  <button
-                    className="loginbtn border-0 py-2 rounded text-white"
-                    type="submit"
-                  >
-                    Login
-                  </button>
-                </div>
-              </form>
-             
-            </div>
+                  Forgot password?
+                </span>
+              </div>
+
+              {/* Button section */}
+              <button
+                className={`loginbtn ${Loading ? 'loading' : ''}`}
+                type="submit"
+                disabled={Loading}
+              >
+                {Loading ? (
+                  <>
+                    <span className="spinner"></span>
+                    Signing in...
+                  </>
+                ) : (
+                  'Sign In'
+                )}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </>
