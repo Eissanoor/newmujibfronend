@@ -199,7 +199,7 @@ function PrinterTableData()
             // Card No at top left (in red as per template)
             doc.setTextColor(255, 0, 0); // Red color for card number
             doc.setFont(undefined, 'bold');
-            doc.text(`${vehicleData.cardno || ''}`, 0.6, 0.15);
+            doc.text(`${vehicleData.cardno || ''}`, 0.6, 1.61);
             
             // Date at top right
             doc.setTextColor(0, 0, 0); // Black for date
