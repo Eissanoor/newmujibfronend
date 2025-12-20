@@ -193,24 +193,24 @@ const formatDate = (dateString) => {
     <div className="container text-start">
       {/* Three Logos at the top */}
       <div className="w-100 py-3 px-3" style={{ backgroundColor: "#E6F2FF" }}>
-        <div className="d-flex justify-content-center justify-content-md-between align-items-center flex-nowrap" style={{ gap: "clamp(0.5rem, 2vw, 1rem)" }}>
-          <div className="d-flex justify-content-center justify-content-md-start" style={{ flex: "1 1 0", minWidth: 0 }}>
-            <img src={logo1} alt="Logo 1" className="img-fluid" style={{ maxHeight: "clamp(40px, 10vw, 80px)", objectFit: "contain", width: "auto" }} />
+        <div className="d-flex justify-content-between align-items-center flex-nowrap" style={{ gap: "clamp(0.25rem, 1vw, 0.75rem)" }}>
+          <div className="d-flex justify-content-start align-items-center" style={{ flex: "0 1 auto", minWidth: 0 }}>
+            <img src={logo1} alt="Logo 1" className="img-fluid" style={{ maxHeight: "clamp(35px, 8vw, 80px)", objectFit: "contain", width: "auto", height: "auto" }} />
           </div>
-          <div className="d-flex justify-content-center" style={{ flex: "1 1 0", minWidth: 0 }}>
-            <img src={logo2} alt="Logo 2" className="img-fluid" style={{ maxHeight: "clamp(40px, 10vw, 80px)", objectFit: "contain", width: "auto" }} />
+          <div className="d-flex justify-content-center align-items-center" style={{ flex: "0 1 auto", minWidth: 0 }}>
+            <img src={logo2} alt="Logo 2" className="img-fluid" style={{ maxHeight: "clamp(35px, 8vw, 80px)", objectFit: "contain", width: "auto", height: "auto" }} />
           </div>
-          <div className="d-flex justify-content-center justify-content-md-end" style={{ flex: "1 1 0", minWidth: 0 }}>
-            <img src={logo3} alt="Logo 3" className="img-fluid" style={{ maxHeight: "clamp(40px, 10vw, 80px)", objectFit: "contain", width: "auto" }} />
+          <div className="d-flex justify-content-end align-items-center" style={{ flex: "0 1 auto", minWidth: 0 }}>
+            <img src={logo3} alt="Logo 3" className="img-fluid" style={{ maxHeight: "clamp(35px, 8vw, 80px)", objectFit: "contain", width: "auto", height: "auto" }} />
           </div>
         </div>
       </div>
-      <div className="border border-secondary mt-4 ">
+      <div className="border border-secondary ">
         <p className=" text-white text-start py-lg-3 py-md-3 py-sm-2 py-2 px-3 fw-bolder" style={{ backgroundColor: "#033268" }}>
           View VCC/Vehicle Details
         </p>
        
-        <div className="border border-secondary rounded-top w-100 mt-2  ">
+        <div className=" w-100   ">
           <div className="mx-lg-3 mx-md-3 mx-sm-0 py-sm-4 py-md-0 py-md-0 py-0 bg-light my-2 mx-sm-2 ">
             <div className="row mx-lg-3 mx-md-3 mx-sm-1 py-2 mx-1 text_lable">
               <div className="col-md-6 col-sm-12 ">
