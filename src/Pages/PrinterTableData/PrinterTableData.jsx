@@ -239,17 +239,17 @@ function PrinterTableData()
 
             // Right Column Fields (matching template positions)
             const vehicleType = `${vehicleData.VehicleBrandName || ''} - ${vehicleData.Vehiclemodel || ''} (${vehicleData.vehicltype || ''})`;
-            doc.text(vehicleType, rightX, rightY, { maxWidth: 3.5 });
+            doc.text(vehicleType, 4.4, 2.1, { maxWidth: 3.5 });
+            rightY += 0.27;
+            doc.text(`${vehicleData.modelyear || ''} - ${numberToWords(vehicleData.modelyear)}`, 4.4, 2.4, { maxWidth: 3.5 });
             rightY += rightLineHeight;
-            doc.text(`${vehicleData.modelyear || ''} - ${numberToWords(vehicleData.modelyear)}`, rightX, rightY);
+            doc.text(`${vehicleData.origin || ''}`, 4.4, 2.65, { maxWidth: 3.5 });
             rightY += rightLineHeight;
-            doc.text(`${vehicleData.origin || ''}`, rightX, rightY);
+            doc.text(`${vehicleData.chassisno || ''}`, 4.4, 2.95, { maxWidth: 3.5 });
             rightY += rightLineHeight;
-            doc.text(`${vehicleData.chassisno || ''}`, rightX, rightY);
+            doc.text(`${vehicleData.color || ''}`, 4.4, 3.3, { maxWidth: 3.5 });
             rightY += rightLineHeight;
-            doc.text(`${vehicleData.color || ''}`, rightX, rightY);
-            rightY += rightLineHeight;
-            doc.text(`${vehicleData.enginno || ''}`, rightX, rightY);
+            doc.text(`${vehicleData.enginno || ''}`, 4.4, 3.6, { maxWidth: 3.5 });
 
             // Comments Section - positioned at bottom area
             doc.setFontSize(7);
