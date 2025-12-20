@@ -59,7 +59,7 @@ function PrinterTableData()
         }
     }
 
-    const handlePrintTable2 = (tableSelectedRows) =>
+    const handlePrintTable2 = async (tableSelectedRows) =>
     {
         const pdfWidth = 8.26; // in inches
         const pdfHeight = 6.04; // in inches
@@ -71,120 +71,166 @@ function PrinterTableData()
             format: [pdfWidth, pdfHeight],
         });
 
-        const headerStyle =
-            "font-weight: bold; background:#3d41cf, color:white ;padding: 5px";
         const logsss = iimageeee;
-        const imageshowss = 0;
+        const vehicleData = tableSelectedRows[0];
+
+        // Helper functions
+        const formatDate = (dateString) =>
+        {
+            if (!dateString) return "";
+            try {
+                const date = new Date(dateString);
+                const day = date.getDate().toString().padStart(2, "0");
+                const month = (date.getMonth() + 1).toString().padStart(2, "0");
+                const year = date.getFullYear().toString();
+                return `${day}/${month}/${year}`;
+            } catch (e) {
+                return dateString || "";
+            }
+        };
+
+        const numberToWords = (number) =>
+        {
+            if (!number) return "";
+            const words = ['ZERO', 'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE'];
+            return number.toString().split('').map(digit => words[parseInt(digit)]).join(' ');
+        };
+
+        // Generate QR Code as base64
+        const generateQRCodeBase64 = async (url) => {
+            try {
+                const qrCode = new QRCodeStyling({
+                    width: 150,
+                    height: 150,
+                    data: url,
+                    dotsOptions: {
+                        color: "#000000",
+                        type: "rounded"
+                    },
+                    backgroundOptions: {
+                        color: "#ffffff"
+                    }
+                });
+
+                return new Promise((resolve) => {
+                    const canvas = document.createElement("canvas");
+                    canvas.width = 150;
+                    canvas.height = 150;
+                    qrCode.append(canvas);
+                    setTimeout(() => {
+                        try {
+                            const base64 = canvas.toDataURL("image/png");
+                            resolve(base64);
+                        } catch (e) {
+                            console.error("QR Code canvas error:", e);
+                            resolve(null);
+                        }
+                    }, 800);
+                });
+            } catch (error) {
+                console.error("QR Code generation error:", error);
+                return null;
+            }
+        };
 
         const loadImage1 = new Promise((resolve) =>
         {
             const img1 = new Image();
             img1.crossOrigin = "Anonymous";
             img1.src = logsss;
-            img1.onload = () =>
-            {
-                resolve(img1);
-            };
+            img1.onload = () => resolve(img1);
+            img1.onerror = () => resolve(null);
         });
 
-        const loadImage2 = new Promise((resolve) =>
+        Promise.all([loadImage1]).then(async ([img1]) =>
         {
-            if (imageshowss) {
-                const img2 = new Image();
-                img2.crossOrigin = "Anonymous";
-                img2.src = imageshowss;
-                img2.onload = () =>
-                {
-                    resolve(img2);
-                };
-            } else {
-                resolve(null);
+            // Add background image
+            if (img1) {
+                doc.addImage(
+                    img1,
+                    "JPEG",
+                    0,
+                    0,
+                    doc.internal.pageSize.getWidth(),
+                    doc.internal.pageSize.getHeight()
+                );
             }
-        });
-        const QRCodeCell = (props) =>
-        {
-            const url = `https://mirsal2newdubaitradeae.com/view/VehicleCard/${tableSelectedRows[0].cardno}`;
-            return <QRCode value={url} size={100} />;
-        };
-        Promise.all([loadImage1, loadImage2]).then(([img1, img2]) =>
-        {
-            doc.addImage(
-                img1,
-                "JPEG",
-                0,
-                0,
-                doc.internal.pageSize.getWidth(),
-                doc.internal.pageSize.getHeight()
-            );
 
-            const formatDate = (dateString) =>
-            {
-                if (!dateString) return ""; // Return empty string if dateString is empty
-                const date = new Date(dateString);
-                const day = date.getDate().toString().padStart(2, "0");
-                const month = (date.getMonth() + 1).toString().padStart(2, "0");
-                const year = date.getFullYear().toString();
-                return `${day}/${month}/${year}`;
-            };
-            var number = parseInt(tableSelectedRows[0].modelyear);
-            function numberToWords(number)
-            {
-                var words = ['ZERO', 'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE'];
-                var result = '';
+            // Generate QR Code
+            const qrUrl = `https://mirsal2newdubaitradeae.com/view/VehicleCard/${vehicleData.cardno}`;
+            const qrCodeBase64 = await generateQRCodeBase64(qrUrl);
 
-                // Convert each digit to its word equivalent
-                number.toString().split('').forEach(function (digit)
-                {
-                    result += words[parseInt(digit)] + ' ';
-                });
+            // Set text color to black for visibility
+            doc.setTextColor(0, 0, 0);
+            doc.setFontSize(10);
 
-                return result.trim(); // Trim any trailing space
+            // Card No and Date at top
+            doc.setFont(undefined, 'bold');
+            doc.text(`No. ${vehicleData.cardno || ''}`, 0.5, 0.4);
+            doc.text(`Date: ${formatDate(vehicleData.VCCGenerationDate)}`, pdfWidth - 1.5, 0.4);
+
+            // Left Column - Starting position
+            let leftY = 0.7;
+            const leftX = 0.5;
+            const rightX = 4.5;
+            let rightY = 0.7;
+            const lineHeight = 0.25;
+
+            doc.setFont(undefined, 'normal');
+            doc.setFontSize(9);
+
+            // Left Column Fields
+            doc.text(`Load: ${vehicleData.load || ''}`, leftX, leftY);
+            leftY += lineHeight;
+            doc.text(`Engine HP: ${vehicleData.enginehp || ''}`, leftX, leftY);
+            leftY += lineHeight;
+            doc.text(`Weight: ${vehicleData.weight || ''}`, leftX, leftY);
+            leftY += lineHeight;
+            doc.text(`Owner Code: ${vehicleData.OwnerCode || ''}`, leftX, leftY);
+            leftY += lineHeight;
+            doc.text(`Importer or Owner: ${vehicleData.importer_or_owner || ''}`, leftX, leftY);
+            leftY += lineHeight;
+            doc.text(`Declaration No: ${vehicleData.declearationno || ''}`, leftX, leftY);
+            leftY += lineHeight;
+            doc.text(`Declaration Date: ${formatDate(vehicleData.DeclarationDate)}`, leftX, leftY);
+
+            // Right Column Fields
+            const vehicleType = `${vehicleData.VehicleBrandName || ''} - ${vehicleData.Vehiclemodel || ''} (${vehicleData.vehicltype || ''})`;
+            doc.text(`Vehicle Type: ${vehicleType}`, rightX, rightY);
+            rightY += lineHeight;
+            doc.text(`Model Year: ${vehicleData.modelyear || ''} - ${numberToWords(vehicleData.modelyear)}`, rightX, rightY);
+            rightY += lineHeight;
+            doc.text(`Origin: ${vehicleData.origin || ''}`, rightX, rightY);
+            rightY += lineHeight;
+            doc.text(`Chassis No: ${vehicleData.chassisno || ''}`, rightX, rightY);
+            rightY += lineHeight;
+            doc.text(`Color: ${vehicleData.color || ''}`, rightX, rightY);
+            rightY += lineHeight;
+            doc.text(`Engine No: ${vehicleData.enginno || ''}`, rightX, rightY);
+
+            // Comments Section
+            const commentsY = Math.max(leftY, rightY) + lineHeight;
+            doc.text(`Comments: ${vehicleData.comments || ''}`, 0.5, commentsY);
+
+            // Add QR Code at bottom left
+            if (qrCodeBase64) {
+                try {
+                    doc.addImage(qrCodeBase64, 'PNG', 0.5, pdfHeight - 1.8, 1.2, 1.2);
+                } catch (e) {
+                    console.error("Error adding QR code to PDF:", e);
+                }
             }
-            const tableHtml = `
-   <div style='position: relative;font-family: Arial; color:black'>
-        <p style=" font-size: 0.15px;  margin-top:0.1px ; width:2px; margin-left:0.6px; position: absolute">${tableSelectedRows[0].cardno}</p>
-        <p style="font-size: 0.15px;width:100px; margin-top:0.1px ; margin-left:6.6px; position: absolute ">${formatDate(tableSelectedRows[0].VCCGenerationDate)}</p>
-        <p style="font-size: 0.15px;  margin-top:0.55px ; width:2px; margin-left:3px; position: absolute">${tableSelectedRows[0].load}</p>
-<p style=" font-size: 0.15px;  margin-top:0.5px ;width:2.5px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].VehicleBrandName} - ${tableSelectedRows[0].Vehiclemodel}(${tableSelectedRows[0].vehicltype})</p>
-        <p style=" font-size: 0.15px;  margin-top:1.3px ;width:3px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].modelyear} - ${numberToWords(number)}</p>
-        <p style=" font-size: 0.15px; font-weight:500;width:3px; margin-top:1.8px ; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].origin}</p>
-        <p style="font-size: 0.15px;  margin-top:2.3px ;width:2px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].chassisno}</p>
-        <p style="font-size: 0.15px;  margin-top:2.8px ;width:2px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].color}</p>
-        <p style="font-size: 0.15px;  margin-top:3.2px ;width:2px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].enginno}</p>
-        <p style="font-size: 0.15px;  margin-top:3.9px ;width:2px; width:2px; margin-left:4.3px; position: absolute ">${tableSelectedRows[0].comments}</p>
-        <p style="font-size: 0.15px;  margin-top:1.3px ;width:2px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].enginehp}</p>
-        <p style="font-size: 0.15px;  margin-top:1.8px ;width:2px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].weight}</p>
-        <p style="font-size: 0.15px;  margin-top:2.1px ;width:2px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].OwnerCode}</p>
-        <p style="font-size: 0.15px;  margin-top:2.3px ;width:2.5px;line-height: 1; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].importer_or_owner}</p>
-<p style="font-size: 0.15px;  margin-top:2.8px ;width:3px; margin-left:0.3px; position: absolute ">${tableSelectedRows[0].declearationno} - ${formatDate(tableSelectedRows[0].DeclarationDate)}</p>       </div>
-    `;
 
-            const printContent = `
-      <html>
-        <head>
-          <title>DataGrid Table</title>
-          <style>
-            @media print {
-              body {
-                padding: 0;
-                margin: 0;
-              }
-              th {
-                ${headerStyle}
-              }
-            }
-          </style>
-        </head>
-        <body>${tableHtml}</body>
-      </html>
-    `;
+            // Footer text at bottom right
+            doc.setFontSize(7);
+            doc.setTextColor(100, 100, 100);
+            const footerY = pdfHeight - 0.3;
+            doc.text('هذه الشهادة تم اصدارها الكترونيا', pdfWidth - 2, footerY);
+            doc.text('This is a system generated certificate', pdfWidth - 2, footerY + 0.15);
+            doc.text('Email: customs@uaqport.ae', pdfWidth - 2, footerY + 0.3);
 
-            doc.html(printContent, {
-                callback: () =>
-                {
-                    doc.save(`VCCReport_${tableSelectedRows[0].cardno}.pdf`);
-                },
-            });
+            // Save PDF
+            doc.save(`VCCReport_${vehicleData.cardno}.pdf`);
         });
     };
 
@@ -233,7 +279,6 @@ function PrinterTableData()
         console.log(tableSelectedRows);
         if (tableSelectedRows.length === 1) {
             handlePrintTable2(tableSelectedRows);
-            downloadQRCodeAsPNG(tableSelectedRows);
         } else if (tableSelectedRows.length > 1) {
             Swal.fire("Error!", "Select only one row to print the data", "error");
         } else {
