@@ -192,10 +192,18 @@ const formatDate = (dateString) => {
   return (
     <div className="container text-start">
       {/* Three Logos at the top */}
-      <div className="d-flex justify-content-center justify-content-md-between align-items-center gap-3 my-3 flex-wrap">
-        <img src={logo1} alt="Logo 1" className="img-fluid" style={{ maxHeight: "80px", objectFit: "contain" }} />
-        <img src={logo2} alt="Logo 2" className="img-fluid" style={{ maxHeight: "80px", objectFit: "contain" }} />
-        <img src={logo3} alt="Logo 3" className="img-fluid" style={{ maxHeight: "80px", objectFit: "contain" }} />
+      <div className="w-100 py-3 px-3" style={{ backgroundColor: "#E6F2FF" }}>
+        <div className="d-flex justify-content-center justify-content-md-between align-items-center gap-3 flex-wrap">
+          <div className="d-flex justify-content-center justify-content-md-start" style={{ flex: "0 0 auto" }}>
+            <img src={logo1} alt="Logo 1" className="img-fluid" style={{ maxHeight: "80px", objectFit: "contain" }} />
+          </div>
+          <div className="d-flex justify-content-center" style={{ flex: "0 0 auto" }}>
+            <img src={logo2} alt="Logo 2" className="img-fluid" style={{ maxHeight: "80px", objectFit: "contain" }} />
+          </div>
+          <div className="d-flex justify-content-center justify-content-md-end" style={{ flex: "0 0 auto" }}>
+            <img src={logo3} alt="Logo 3" className="img-fluid" style={{ maxHeight: "80px", objectFit: "contain" }} />
+          </div>
+        </div>
       </div>
       <div className="border border-secondary mt-4 ">
         <p className=" text-white text-start py-lg-3 py-md-3 py-sm-2 py-2 px-3 fw-bolder" style={{ backgroundColor: "#033268" }}>
