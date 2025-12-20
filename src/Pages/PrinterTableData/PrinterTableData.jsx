@@ -204,7 +204,7 @@ function PrinterTableData()
             // Date at top right
             doc.setTextColor(0, 0, 0); // Black for date
             doc.setFont(undefined, 'normal');
-            doc.text(`${formatDate(vehicleData.VCCGenerationDate)}`, 6.6, 1.5);
+            doc.text(`${formatDate(vehicleData.VCCGenerationDate)}`, 6.6, 1.55);
 
             // Left Column Fields - Starting positions based on template
             const leftX = 0.3; // Left column X position
