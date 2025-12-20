@@ -81,9 +81,10 @@ function PrinterTableData()
             try {
                 const date = new Date(dateString);
                 const day = date.getDate().toString().padStart(2, "0");
-                const month = (date.getMonth() + 1).toString().padStart(2, "0");
+                const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+                const month = months[date.getMonth()];
                 const year = date.getFullYear().toString();
-                return `${day}/${month}/${year}`;
+                return `${day}-${month}-${year}`;
             } catch (e) {
                 return dateString || "";
             }
@@ -162,72 +163,85 @@ function PrinterTableData()
 
             // Set text color to black for visibility
             doc.setTextColor(0, 0, 0);
-            doc.setFontSize(10);
+            doc.setFontSize(8);
 
-            // Card No and Date at top
+            // Card No at top left (in red as per template)
+            doc.setTextColor(255, 0, 0); // Red color for card number
             doc.setFont(undefined, 'bold');
-            doc.text(`No. ${vehicleData.cardno || ''}`, 0.5, 0.4);
-            doc.text(`Date: ${formatDate(vehicleData.VCCGenerationDate)}`, pdfWidth - 1.5, 0.4);
+            doc.text(`${vehicleData.cardno || ''}`, 0.6, 0.15);
+            
+            // Date at top right
+            doc.setTextColor(0, 0, 0); // Black for date
+            doc.setFont(undefined, 'normal');
+            doc.text(`${formatDate(vehicleData.VCCGenerationDate)}`, 6.6, 0.15);
 
-            // Left Column - Starting position
-            let leftY = 0.7;
-            const leftX = 0.5;
-            const rightX = 4.5;
-            let rightY = 0.7;
-            const lineHeight = 0.25;
+            // Left Column Fields - Starting positions based on template
+            const leftX = 0.3; // Left column X position
+            let leftY = 0.55; // Starting Y position for left column
+            const leftLineHeight = 0.18; // Line spacing for left column
 
             doc.setFont(undefined, 'normal');
-            doc.setFontSize(9);
+            doc.setFontSize(7);
+            doc.setTextColor(0, 0, 0);
 
-            // Left Column Fields
-            doc.text(`Load: ${vehicleData.load || ''}`, leftX, leftY);
-            leftY += lineHeight;
-            doc.text(`Engine HP: ${vehicleData.enginehp || ''}`, leftX, leftY);
-            leftY += lineHeight;
-            doc.text(`Weight: ${vehicleData.weight || ''}`, leftX, leftY);
-            leftY += lineHeight;
-            doc.text(`Owner Code: ${vehicleData.OwnerCode || ''}`, leftX, leftY);
-            leftY += lineHeight;
-            doc.text(`Importer or Owner: ${vehicleData.importer_or_owner || ''}`, leftX, leftY);
-            leftY += lineHeight;
-            doc.text(`Declaration No: ${vehicleData.declearationno || ''}`, leftX, leftY);
-            leftY += lineHeight;
-            doc.text(`Declaration Date: ${formatDate(vehicleData.DeclarationDate)}`, leftX, leftY);
+            // Left Column Fields (matching template positions)
+            doc.text(`${vehicleData.load || ''}`, leftX, leftY);
+            leftY += leftLineHeight;
+            doc.text(`${vehicleData.enginehp || ''}`, leftX, leftY);
+            leftY += leftLineHeight;
+            doc.text(`${vehicleData.weight || ''}`, leftX, leftY);
+            leftY += leftLineHeight;
+            doc.text(`${vehicleData.OwnerCode || ''}`, leftX, leftY);
+            leftY += leftLineHeight;
+            // Importer or Owner - may need to wrap text
+            const importerText = vehicleData.importer_or_owner || '';
+            doc.text(importerText, leftX, leftY, { maxWidth: 2.5 });
+            leftY += leftLineHeight * 1.5;
+            doc.text(`${vehicleData.declearationno || ''}`, leftX, leftY);
+            leftY += leftLineHeight;
+            doc.text(`${formatDate(vehicleData.DeclarationDate)}`, leftX, leftY);
 
-            // Right Column Fields
+            // Right Column Fields - Starting positions based on template
+            const rightX = 4.3; // Right column X position
+            let rightY = 0.5; // Starting Y position for right column
+            const rightLineHeight = 0.18; // Line spacing for right column
+
+            // Right Column Fields (matching template positions)
             const vehicleType = `${vehicleData.VehicleBrandName || ''} - ${vehicleData.Vehiclemodel || ''} (${vehicleData.vehicltype || ''})`;
-            doc.text(`Vehicle Type: ${vehicleType}`, rightX, rightY);
-            rightY += lineHeight;
-            doc.text(`Model Year: ${vehicleData.modelyear || ''} - ${numberToWords(vehicleData.modelyear)}`, rightX, rightY);
-            rightY += lineHeight;
-            doc.text(`Origin: ${vehicleData.origin || ''}`, rightX, rightY);
-            rightY += lineHeight;
-            doc.text(`Chassis No: ${vehicleData.chassisno || ''}`, rightX, rightY);
-            rightY += lineHeight;
-            doc.text(`Color: ${vehicleData.color || ''}`, rightX, rightY);
-            rightY += lineHeight;
-            doc.text(`Engine No: ${vehicleData.enginno || ''}`, rightX, rightY);
+            doc.text(vehicleType, rightX, rightY, { maxWidth: 3.5 });
+            rightY += rightLineHeight;
+            doc.text(`${vehicleData.modelyear || ''} - ${numberToWords(vehicleData.modelyear)}`, rightX, rightY);
+            rightY += rightLineHeight;
+            doc.text(`${vehicleData.origin || ''}`, rightX, rightY);
+            rightY += rightLineHeight;
+            doc.text(`${vehicleData.chassisno || ''}`, rightX, rightY);
+            rightY += rightLineHeight;
+            doc.text(`${vehicleData.color || ''}`, rightX, rightY);
+            rightY += rightLineHeight;
+            doc.text(`${vehicleData.enginno || ''}`, rightX, rightY);
 
-            // Comments Section
-            const commentsY = Math.max(leftY, rightY) + lineHeight;
-            doc.text(`Comments: ${vehicleData.comments || ''}`, 0.5, commentsY);
+            // Comments Section - positioned at bottom area
+            doc.setFontSize(7);
+            doc.text(`${vehicleData.comments || ''}`, 4.3, 3.9);
 
-            // Add QR Code at bottom left
+            // Add QR Code at bottom left (matching template position)
             if (qrCodeBase64) {
                 try {
-                    doc.addImage(qrCodeBase64, 'PNG', 0.5, pdfHeight - 1.8, 1.2, 1.2);
+                    // Position QR code at bottom left area
+                    doc.addImage(qrCodeBase64, 'PNG', 0.3, 4.7, 1.0, 1.0);
                 } catch (e) {
                     console.error("Error adding QR code to PDF:", e);
                 }
             }
 
-            // Footer text at bottom right
-            doc.setFontSize(7);
+            // Footer text at bottom right (matching template)
+            doc.setFontSize(6);
             doc.setTextColor(100, 100, 100);
-            const footerY = pdfHeight - 0.3;
-            doc.text('هذه الشهادة تم اصدارها الكترونيا', pdfWidth - 2, footerY);
-            doc.text('This is a system generated certificate', pdfWidth - 2, footerY + 0.15);
-            doc.text('Email: customs@uaqport.ae', pdfWidth - 2, footerY + 0.3);
+            const footerY = 5.5;
+            doc.text('هذه الشهادة تم اصدارها الكترونيا', 5.5, footerY);
+            doc.text('This is a system generated certificate', 5.5, footerY + 0.12);
+            doc.setFontSize(6);
+            doc.text('Email: customs@uaqport.ae', 5.5, footerY + 0.24);
 
             // Save PDF
             doc.save(`VCCReport_${vehicleData.cardno}.pdf`);
