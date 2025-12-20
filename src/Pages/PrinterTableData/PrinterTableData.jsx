@@ -280,14 +280,7 @@ function PrinterTableData()
                 console.error("QR Code base64 is null or undefined");
             }
 
-            // Footer text at bottom right (matching template)
-            doc.setFontSize(6);
-            doc.setTextColor(100, 100, 100);
-            const footerY = 5.5;
-            doc.text('هذه الشهادة تم اصدارها الكترونيا', 5.5, footerY);
-            doc.text('This is a system generated certificate', 5.5, footerY + 0.12);
-            doc.setFontSize(6);
-            doc.text('Email: customs@uaqport.ae', 5.5, footerY + 0.24);
+            
 
             // Save PDF
             const vehicleBrandName = vehicleData.VehicleBrandName || '';
