@@ -7,6 +7,14 @@ const handlePrintTable2 = (tableSelectedRows) =>
   const pdfWidth = 8.26; // in inches
   const pdfHeight = 6.04; // in inches
 
+  // Extract vehicle data for filename
+  const vehicleData = tableSelectedRows && tableSelectedRows[0] ? tableSelectedRows[0] : {};
+  const vehicleBrandName = vehicleData.VehicleBrandName || '';
+  const vehicleModel = vehicleData.Vehiclemodel || '';
+  
+  // Generate PDF filename in format: UAQVCC-VehicleBrandName-Vehiclemodel
+  const pdfFilename = `UAQVCC-${vehicleBrandName}-${vehicleModel}.pdf`;
+
   // Create a new jsPDF instance with custom dimensions
   const doc = new jsPDF({
     orientation: 'landscape',
@@ -84,7 +92,7 @@ const handlePrintTable2 = (tableSelectedRows) =>
     doc.html(printContent, {
       callback: () =>
       {
-        doc.save('table.pdf');
+        doc.save(pdfFilename);
       },
     });
   });

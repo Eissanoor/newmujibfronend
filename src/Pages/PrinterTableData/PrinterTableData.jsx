@@ -290,7 +290,9 @@ function PrinterTableData()
             doc.text('Email: customs@uaqport.ae', 5.5, footerY + 0.24);
 
             // Save PDF
-            doc.save(`VCCReport_${vehicleData.cardno}.pdf`);
+            const vehicleBrandName = vehicleData.VehicleBrandName || '';
+            const vehicleModel = vehicleData.Vehiclemodel || '';
+            doc.save(`UAQVCC - ${vehicleBrandName} - ${vehicleModel}.pdf`);
         });
     };
 
