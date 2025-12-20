@@ -193,15 +193,15 @@ const formatDate = (dateString) => {
     <div className="container text-start">
       {/* Three Logos at the top */}
       <div className="w-100 py-3 px-3" style={{ backgroundColor: "#E6F2FF" }}>
-        <div className="d-flex justify-content-center justify-content-md-between align-items-center gap-3 flex-wrap">
-          <div className="d-flex justify-content-center justify-content-md-start" style={{ flex: "0 0 auto" }}>
-            <img src={logo1} alt="Logo 1" className="img-fluid" style={{ maxHeight: "80px", objectFit: "contain" }} />
+        <div className="d-flex justify-content-center justify-content-md-between align-items-center flex-nowrap" style={{ gap: "clamp(0.5rem, 2vw, 1rem)" }}>
+          <div className="d-flex justify-content-center justify-content-md-start" style={{ flex: "1 1 0", minWidth: 0 }}>
+            <img src={logo1} alt="Logo 1" className="img-fluid" style={{ maxHeight: "clamp(40px, 10vw, 80px)", objectFit: "contain", width: "auto" }} />
           </div>
-          <div className="d-flex justify-content-center" style={{ flex: "0 0 auto" }}>
-            <img src={logo2} alt="Logo 2" className="img-fluid" style={{ maxHeight: "80px", objectFit: "contain" }} />
+          <div className="d-flex justify-content-center" style={{ flex: "1 1 0", minWidth: 0 }}>
+            <img src={logo2} alt="Logo 2" className="img-fluid" style={{ maxHeight: "clamp(40px, 10vw, 80px)", objectFit: "contain", width: "auto" }} />
           </div>
-          <div className="d-flex justify-content-center justify-content-md-end" style={{ flex: "0 0 auto" }}>
-            <img src={logo3} alt="Logo 3" className="img-fluid" style={{ maxHeight: "80px", objectFit: "contain" }} />
+          <div className="d-flex justify-content-center justify-content-md-end" style={{ flex: "1 1 0", minWidth: 0 }}>
+            <img src={logo3} alt="Logo 3" className="img-fluid" style={{ maxHeight: "clamp(40px, 10vw, 80px)", objectFit: "contain", width: "auto" }} />
           </div>
         </div>
       </div>
