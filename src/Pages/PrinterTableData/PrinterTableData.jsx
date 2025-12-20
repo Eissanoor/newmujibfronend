@@ -17,6 +17,7 @@ import { ShipmentRequestColumns } from '../../Datatablesource'
 import Datatable from '../../Component/DataTable/Datatable'
 import { DataTableContext } from '../../Contexts/DataTableContext'
 import QRCode from "qrcode.react";
+import QRCodeLib from "qrcode";
 import iimageeee from "../../img/temp1.1.png"
 import { saveAs } from "file-saver";
 import QRCodeStyling from "qr-code-styling";
@@ -97,40 +98,70 @@ function PrinterTableData()
             return number.toString().split('').map(digit => words[parseInt(digit)]).join(' ');
         };
 
-        // Generate QR Code as base64
+        // Generate QR Code as base64 using qrcode library (most reliable method)
         const generateQRCodeBase64 = async (url) => {
             try {
-                const qrCode = new QRCodeStyling({
+                // Use qrcode library's toDataURL method for reliable base64 generation
+                const base64 = await QRCodeLib.toDataURL(url, {
                     width: 150,
-                    height: 150,
-                    data: url,
-                    dotsOptions: {
-                        color: "#000000",
-                        type: "rounded"
-                    },
-                    backgroundOptions: {
-                        color: "#ffffff"
+                    margin: 1,
+                    color: {
+                        dark: '#000000',
+                        light: '#FFFFFF'
                     }
                 });
-
-                return new Promise((resolve) => {
-                    const canvas = document.createElement("canvas");
-                    canvas.width = 150;
-                    canvas.height = 150;
-                    qrCode.append(canvas);
-                    setTimeout(() => {
-                        try {
-                            const base64 = canvas.toDataURL("image/png");
-                            resolve(base64);
-                        } catch (e) {
-                            console.error("QR Code canvas error:", e);
-                            resolve(null);
-                        }
-                    }, 800);
-                });
+                console.log("QR Code generated successfully using qrcode library");
+                return base64;
             } catch (error) {
-                console.error("QR Code generation error:", error);
-                return null;
+                console.error("QR Code generation error with qrcode library:", error);
+                // Fallback to QRCodeStyling
+                try {
+                    return new Promise((resolve) => {
+                        const container = document.createElement("div");
+                        container.style.position = "absolute";
+                        container.style.left = "-9999px";
+                        container.style.top = "-9999px";
+                        document.body.appendChild(container);
+
+                        const qrCode = new QRCodeStyling({
+                            width: 150,
+                            height: 150,
+                            data: url,
+                            dotsOptions: {
+                                color: "#000000",
+                                type: "rounded"
+                            },
+                            backgroundOptions: {
+                                color: "#ffffff"
+                            }
+                        });
+
+                        const canvas = document.createElement("canvas");
+                        canvas.width = 150;
+                        canvas.height = 150;
+                        container.appendChild(canvas);
+                        
+                        qrCode.append(canvas);
+
+                        setTimeout(() => {
+                            try {
+                                const base64 = canvas.toDataURL("image/png");
+                                document.body.removeChild(container);
+                                console.log("QR Code generated successfully using QRCodeStyling fallback");
+                                resolve(base64);
+                            } catch (e) {
+                                console.error("QRCodeStyling fallback error:", e);
+                                if (document.body.contains(container)) {
+                                    document.body.removeChild(container);
+                                }
+                                resolve(null);
+                            }
+                        }, 1000);
+                    });
+                } catch (fallbackError) {
+                    console.error("All QR Code generation methods failed:", fallbackError);
+                    return null;
+                }
             }
         };
 
@@ -227,11 +258,26 @@ function PrinterTableData()
             // Add QR Code at bottom left (matching template position)
             if (qrCodeBase64) {
                 try {
+                    console.log("QR Code generated successfully, adding to PDF");
                     // Position QR code at bottom left area
-                    doc.addImage(qrCodeBase64, 'PNG', 0.3, 4.7, 1.0, 1.0);
+                    // Using smaller size to ensure it fits: 0.8 x 0.8 inches
+                    doc.addImage(qrCodeBase64, 'PNG', 0.3, 4.7, 0.8, 0.8);
+                    console.log("QR Code added to PDF successfully");
                 } catch (e) {
                     console.error("Error adding QR code to PDF:", e);
+                    // Try alternative method if first fails
+                    try {
+                        const img = new Image();
+                        img.src = qrCodeBase64;
+                        img.onload = () => {
+                            doc.addImage(img, 'PNG', 0.3, 4.7, 0.8, 0.8);
+                        };
+                    } catch (e2) {
+                        console.error("Alternative QR code method also failed:", e2);
+                    }
                 }
+            } else {
+                console.error("QR Code base64 is null or undefined");
             }
 
             // Footer text at bottom right (matching template)

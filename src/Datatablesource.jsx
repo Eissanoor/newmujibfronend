@@ -1,8 +1,12 @@
 
 import QRCode from 'qrcode.react';
 const QRCodeCell = props => {
-    const url = `https://mirsal2newdubaitradeae.com/VehicleDetail/${props.value}`;
-    return <QRCode value={url} size={40} />;
+    const url = `https://mirsal2newdubaitradeae.com/view/VehicleCard/${props.value}`;
+    return (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '5px' }}>
+            <QRCode value={url} size={60} />
+        </div>
+    );
 };
 
 export const ShipmentRequestColumns = [
@@ -72,8 +76,12 @@ export const ShipmentRequestColumns = [
     },
   },
   {
-    field: "cardnos",
+    field: "qrcode",
     headerName: "QR Code",
+    width: 120,
+    headerClassName: "header-red",
+    sortable: false,
+    filterable: false,
     renderCell: (params) => <QRCodeCell value={params.row.cardno} />,
   },
 ];
