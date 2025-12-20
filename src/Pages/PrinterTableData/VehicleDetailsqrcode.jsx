@@ -6,6 +6,9 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 import ReactDOM from "react-dom";
 import ReactDOMServer from "react-dom/server";
+import logo1 from "../../img/logo1.png";
+import logo2 from "../../img/logo2.png";
+import logo3 from "../../img/logo3.png";
 
 const VehicleDetailsqrcode = () => {
   let { cardNo } = useParams();
@@ -188,16 +191,17 @@ const formatDate = (dateString) => {
 
   return (
     <div className="container text-start">
+      {/* Three Logos at the top */}
+      <div className="d-flex justify-content-between align-items-center gap-3 my-3">
+        <img src={logo1} alt="Logo 1" style={{ maxHeight: "80px", objectFit: "contain" }} />
+        <img src={logo2} alt="Logo 2" style={{ maxHeight: "80px", objectFit: "contain" }} />
+        <img src={logo3} alt="Logo 3" style={{ maxHeight: "80px", objectFit: "contain" }} />
+      </div>
       <div className="border border-secondary mt-4 ">
-        <p className="bg-custom text-white text-start py-lg-3 py-md-3 py-sm-2 py-2 px-3 fw-bolder">
-          View VCC Details
+        <p className=" text-white text-start py-lg-3 py-md-3 py-sm-2 py-2 px-3 fw-bolder" style={{ backgroundColor: "#033268" }}>
+          View VCC/Vehicle Details
         </p>
-        <h4
-          className="toperheading text-start mx-3 fw-bold"
-          style={{ backgroundColor: "white" }}
-        >
-          VCC/Vehicle Details
-        </h4>
+       
         <div className="border border-secondary rounded-top w-100 mt-2  ">
           <div className="mx-lg-3 mx-md-3 mx-sm-0 py-sm-4 py-md-0 py-md-0 py-0 bg-light my-2 mx-sm-2 ">
             <div className="row mx-lg-3 mx-md-3 mx-sm-1 py-2 mx-1 text_lable">
