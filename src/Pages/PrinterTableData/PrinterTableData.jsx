@@ -234,8 +234,8 @@ function PrinterTableData()
 
             // Right Column Fields - Starting positions based on template
             const rightX = 4.3; // Right column X position
-            let rightY = 0.5; // Starting Y position for right column
-            const rightLineHeight = 0.18; // Line spacing for right column
+            let rightY = 2.3; // Starting Y position for right column
+            const rightLineHeight = 0.24; // Line spacing for right column
 
             // Right Column Fields (matching template positions)
             const vehicleType = `${vehicleData.VehicleBrandName || ''} - ${vehicleData.Vehiclemodel || ''} (${vehicleData.vehicltype || ''})`;
