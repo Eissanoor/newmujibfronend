@@ -216,21 +216,21 @@ function PrinterTableData()
             doc.setTextColor(0, 0, 0);
 
             // Left Column Fields (matching template positions)
-            doc.text(`${vehicleData.load || ''}`, leftX, leftY);
+            doc.text(`${vehicleData.load || ''}`, leftX, 2.1); 
             leftY += leftLineHeight;
-            doc.text(`${vehicleData.enginehp || ''}`, leftX, leftY);
+            doc.text(`${vehicleData.enginehp || ''}`, leftX, 2.4);
             leftY += leftLineHeight;
-            doc.text(`${vehicleData.weight || ''}`, leftX, leftY);
+            doc.text(`${vehicleData.weight || ''}`, leftX, 2.66);
             leftY += leftLineHeight;
-            doc.text(`${vehicleData.OwnerCode || ''}`, leftX, leftY);
+            doc.text(`${vehicleData.OwnerCode || ''}`, leftX, 2.96);
             leftY += leftLineHeight;
             // Importer or Owner - may need to wrap text
             const importerText = vehicleData.importer_or_owner || '';
-            doc.text(importerText, leftX, leftY, { maxWidth: 2.5 });
+            doc.text(importerText, leftX, 3.22, { maxWidth: 2.5 });
             leftY += leftLineHeight * 1.5;
-            doc.text(`${vehicleData.declearationno || ''}`, leftX, leftY);
+            doc.text(`${vehicleData.declearationno || ''}`, leftX, 3.48);
             leftY += leftLineHeight;
-            doc.text(`${formatDate(vehicleData.DeclarationDate)}`, leftX, leftY);
+            
 
             // Right Column Fields - Starting positions based on template
             const rightX = 4.3; // Right column X position
@@ -241,19 +241,19 @@ function PrinterTableData()
             const vehicleType = `${vehicleData.VehicleBrandName || ''} - ${vehicleData.Vehiclemodel || ''} (${vehicleData.vehicltype || ''})`;
             doc.text(vehicleType, 4.4, 2.1, { maxWidth: 3.5 });
             rightY += 0.27;
-            doc.text(`${vehicleData.modelyear || ''} - ${numberToWords(vehicleData.modelyear)}`, 4.4, 2.4, { maxWidth: 3.5 });
+            doc.text(`${vehicleData.modelyear || ''}`, 4.4, 2.4, { maxWidth: 3.5 });
             rightY += rightLineHeight;
-            doc.text(`${vehicleData.origin || ''}`, 4.4, 2.65, { maxWidth: 3.5 });
+            doc.text(`${vehicleData.origin || ''}`, 4.4, 2.66, { maxWidth: 3.5 });
             rightY += rightLineHeight;
-            doc.text(`${vehicleData.chassisno || ''}`, 4.4, 2.95, { maxWidth: 3.5 });
+            doc.text(`${vehicleData.chassisno || ''}`, 4.4, 2.96, { maxWidth: 3.5 });
             rightY += rightLineHeight;
-            doc.text(`${vehicleData.color || ''}`, 4.4, 3.3, { maxWidth: 3.5 });
+            doc.text(`${vehicleData.color || ''}`, 4.4, 3.22, { maxWidth: 3.5 });
             rightY += rightLineHeight;
-            doc.text(`${vehicleData.enginno || ''}`, 4.4, 3.6, { maxWidth: 3.5 });
+            doc.text(`${vehicleData.enginno || ''}`, 4.4, 3.48, { maxWidth: 3.5 });
 
             // Comments Section - positioned at bottom area
             doc.setFontSize(7);
-            doc.text(`${vehicleData.comments || ''}`, 4.3, 3.9);
+            doc.text(`${vehicleData.comments || ''}`, 4.28, 4.03);
 
             // Add QR Code at bottom left (matching template position)
             if (qrCodeBase64) {
