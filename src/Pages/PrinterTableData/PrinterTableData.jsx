@@ -189,16 +189,16 @@ function PrinterTableData()
             }
 
             // Generate QR Code
-            const qrUrl = `https://hutchisonportsuaqe.com/view/VehicleCard/${vehicleData.cardno}`;
+            const qrUrl = `https://hutchisonportsuaqe.com/view/VehicleCard/${vehicleData.id}`;
             const qrCodeBase64 = await generateQRCodeBase64(qrUrl);
 
             // Set text color to black for visibility
             doc.setTextColor(0, 0, 0);
-            doc.setFontSize(8);
+            doc.setFontSize(11);
 
             // Card No at top left (in red as per template)
             doc.setTextColor(255, 0, 0); // Red color for card number
-            doc.setFont(undefined, 'bold');
+            doc.setFont(undefined, 'normal');
             doc.text(`${vehicleData.cardno || ''}`, 0.6, 1.61);
             
             // Date at top right
@@ -253,7 +253,7 @@ function PrinterTableData()
 
             // Comments Section - positioned at bottom area
             doc.setFontSize(7);
-            doc.text(`${vehicleData.comments || ''}`, 4.28, 4.03);
+            doc.text(`${vehicleData.comments || ''}`, 4.22, 4.03);
 
             // Add QR Code at bottom left (matching template position)
             if (qrCodeBase64) {
