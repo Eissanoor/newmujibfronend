@@ -7,6 +7,7 @@ import DataTableProvider from '../../Contexts/DataTableContext';
 import UpdataVehicle from '../../Pages/PrinterTableData/UpdataVehicle';
 import ViewVehicle from '../../Pages/PrinterTableData/ViewVehicle';
 import VehicleDetailsqrcode from '../../Pages/PrinterTableData/VehicleDetailsqrcode';
+import DigitalVCCDetails from '../../Pages/PrinterTableData/DigitalVCCDetails';
 import Downloads from '../../Pages/PrinterTableData/Downloads';
 import Login from '../../Pages/Login/Login';
 import ChangePasswordForm from '../../Pages/Setting/PasswordChange/ChangePasswordForm';
@@ -24,6 +25,7 @@ function App() {
                     <Route path='/view/VehicleCard/:userId' element={<ViewVehicle />} />
                     
                     <Route path='/VehicleDetail/:cardNo' element={<VehicleDetailsqrcode />} />
+                    <Route path='/Validate/DigitalVCCDetails' element={<DigitalVCCDetails />} />
                     
                     <Route path='/Change/password' element={<ChangePasswordForm />} />
                     <Route path='/Download' element={<Downloads />} />

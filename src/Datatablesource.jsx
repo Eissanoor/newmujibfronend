@@ -1,7 +1,9 @@
 
 import QRCode from 'qrcode.react';
 const QRCodeCell = props => {
-    const url = `https://hutchisonportsuaqe.com/view/VehicleCard/${props.value}`;
+    const vehicleId = props.row?._id || props.row?.id || props.value;
+    const encodedApplicationId = encodeURIComponent(btoa(vehicleId));
+    const url = `https://hutchisonportsuaqe.com/Validate/DigitalVCCDetails?ApplicationId=${encodedApplicationId}`;
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '5px' }}>
             <QRCode value={url} size={60} />
@@ -82,6 +84,6 @@ export const ShipmentRequestColumns = [
     headerClassName: "header-red",
     sortable: false,
     filterable: false,
-    renderCell: (params) => <QRCodeCell value={params.row.cardno} />,
+    renderCell: (params) => <QRCodeCell value={params.row.cardno} row={params.row} />,
   },
 ];

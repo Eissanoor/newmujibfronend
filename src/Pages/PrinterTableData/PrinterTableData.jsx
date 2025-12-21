@@ -189,7 +189,9 @@ function PrinterTableData()
             }
 
             // Generate QR Code
-            const qrUrl = `https://hutchisonportsuaqe.com/view/VehicleCard/${vehicleData.id}`;
+            const vehicleId = vehicleData._id || vehicleData.id || vehicleData.cardno;
+            const encodedApplicationId = encodeURIComponent(btoa(vehicleId));
+            const qrUrl = `https://hutchisonportsuaqe.com/Validate/DigitalVCCDetails?ApplicationId=${encodedApplicationId}`;
             const qrCodeBase64 = await generateQRCodeBase64(qrUrl);
 
             // Set text color to black for visibility
@@ -291,9 +293,10 @@ function PrinterTableData()
 
     const downloadQRCodeAsPNG = async (tableSelectedRows) =>
     {
-
-        const cardNumber = tableSelectedRows[0].cardno;
-        const url = `https://hutchisonportsuaqe.com/VehicleDetail/${cardNumber}`;
+        const vehicleData = tableSelectedRows[0];
+        const vehicleId = vehicleData._id || vehicleData.id || vehicleData.cardno;
+        const encodedApplicationId = encodeURIComponent(btoa(vehicleId));
+        const url = `https://hutchisonportsuaqe.com/Validate/DigitalVCCDetails?ApplicationId=${encodedApplicationId}`;
 
         try {
             const qrCode = new QRCodeStyling({
@@ -315,7 +318,7 @@ function PrinterTableData()
             await new Promise((resolve) =>
             {
                 qrCode.download({
-                    name: `qrcode_${cardNumber}`,
+                    name: `qrcode_${vehicleData.cardno || vehicleId}`,
                     extension: "png",
                 });
                 setTimeout(resolve, 500);
