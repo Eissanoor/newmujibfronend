@@ -102,7 +102,7 @@ const VehicleDetailsqrcode = () => {
        }
      });
     const QRCodeCell = (props) => {
-  const url = `https://mirsal2newdubaitradeae.com/view/VehicleCard/${props.cardNo}`;
+  const url = `https://hutchisonportsuaqe.com/view/VehicleCard/${props.cardNo}`;
   return <QRCode value={url} size={1} />;
 };
 

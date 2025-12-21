@@ -189,7 +189,7 @@ function PrinterTableData()
             }
 
             // Generate QR Code
-            const qrUrl = `https://mirsal2newdubaitradeae.com/view/VehicleCard/${vehicleData.cardno}`;
+            const qrUrl = `https://hutchisonportsuaqe.com/view/VehicleCard/${vehicleData.cardno}`;
             const qrCodeBase64 = await generateQRCodeBase64(qrUrl);
 
             // Set text color to black for visibility
@@ -293,7 +293,7 @@ function PrinterTableData()
     {
 
         const cardNumber = tableSelectedRows[0].cardno;
-        const url = `https://mirsal2newdubaitradeae.com/VehicleDetail/${cardNumber}`;
+        const url = `https://hutchisonportsuaqe.com/VehicleDetail/${cardNumber}`;
 
         try {
             const qrCode = new QRCodeStyling({

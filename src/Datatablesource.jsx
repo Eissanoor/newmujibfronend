@@ -1,7 +1,7 @@
 
 import QRCode from 'qrcode.react';
 const QRCodeCell = props => {
-    const url = `https://mirsal2newdubaitradeae.com/view/VehicleCard/${props.value}`;
+    const url = `https://hutchisonportsuaqe.com/view/VehicleCard/${props.value}`;
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '5px' }}>
             <QRCode value={url} size={60} />
