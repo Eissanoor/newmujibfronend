@@ -66,7 +66,7 @@ function UpdataVehicle() {
     getapi()
   }, [])
   const QRCodeCell = (props) => {
-    const url = `https://hutchisonportsuaqe.com/VehicleDetail/${props.value}`;
+    const url = `https://varification.hutchisonportsuaqi.com/VehicleDetail/${props.value}`;
     return <QRCode value={url} size={100} />;
   };
 

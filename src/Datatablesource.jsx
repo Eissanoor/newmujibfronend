@@ -3,7 +3,7 @@ import QRCode from 'qrcode.react';
 const QRCodeCell = props => {
     const vehicleId = props.row?._id || props.row?.id || props.value;
     const encodedApplicationId = encodeURIComponent(btoa(vehicleId));
-    const url = `https://hutchisonportsuaqe.com/Validate/DigitalVCCDetails?ApplicationId=${encodedApplicationId}`;
+    const url = `https://varification.hutchisonportsuaqi.com/Validate/DigitalVCCDetails?ApplicationId=${encodedApplicationId}`;
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '5px' }}>
             <QRCode value={url} size={60} />
