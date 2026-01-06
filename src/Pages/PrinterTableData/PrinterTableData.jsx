@@ -224,13 +224,13 @@ function PrinterTableData()
             leftY += leftLineHeight;
             doc.text(`${vehicleData.weight || ''}`, leftX, 2.66);
             leftY += leftLineHeight;
-            doc.text(`${vehicleData.OwnerCode || ''}`, leftX, 2.96);
-            leftY += leftLineHeight;
+           
+           
             // Importer or Owner - may need to wrap text
             const importerText = vehicleData.importer_or_owner || '';
-            doc.text(importerText, leftX, 3.22, { maxWidth: 2.5 });
+            doc.text(importerText, leftX, 2.96, { maxWidth: 2.5 });
             leftY += leftLineHeight * 1.5;
-            doc.text(`${vehicleData.declearationno || ''}`, leftX, 3.48);
+            doc.text(`${vehicleData.declearationno || ''}`, leftX, 3.22);
             leftY += leftLineHeight;
             
 
