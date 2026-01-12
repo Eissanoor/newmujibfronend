@@ -249,9 +249,9 @@ function PrinterTableData()
             rightY += rightLineHeight;
             doc.text(`${vehicleData.chassisno || ''}`, 4.4, 2.96, { maxWidth: 3.5 });
             rightY += rightLineHeight;
-            doc.text(`${vehicleData.color || ''}`, 4.4, 3.22, { maxWidth: 3.5 });
+            doc.text(`${vehicleData.color || ''}`, 4.4, 3.48, { maxWidth: 3.5 });
             rightY += rightLineHeight;
-            doc.text(`${vehicleData.enginno || ''}`, 4.4, 3.48, { maxWidth: 3.5 });
+            doc.text(`${vehicleData.enginno || ''}`, 4.4, 3.22, { maxWidth: 3.5 });
 
             // Comments Section - positioned at bottom area
             doc.setFontSize(7);
