@@ -4,7 +4,7 @@ import Pagerounter from './Component/Rounter/Pagerounter';
 import axios from "axios";
 import { ToastProvider } from './Contexts/ToastContext';
 
-axios.defaults.baseURL = "https://mujibnewproject.vercel.app/";
+axios.defaults.baseURL = "/";
 function App() {
   return (
     <>
